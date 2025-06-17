@@ -11,7 +11,7 @@ const current_index = ref(0)
 
 const on_start = () => {
   setInterval(() => {
-    current_index.value += 1
+    current_index.value = (current_index.value + 1) % current_notes.value.length
   }, 1000);
 }
 </script>
@@ -26,7 +26,11 @@ const on_start = () => {
         v-model:current_key="current_key"
       />
       <div class="flex flex-col justify-center items-center w-full relative">
-        <NoteList class="absolute top-4" :current_notes="current_notes"/>
+        <NoteList 
+          class="absolute top-4" 
+          :current_notes="current_notes"
+          :current_index="current_index"
+        />
         <NoteDisplay 
           v-model:current_notes="current_notes"
           v-model:current_index="current_index"
