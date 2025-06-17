@@ -15,5 +15,5 @@ export function get_scale_notes(selected_key: string, selected_scale: string): s
     scale_notes.push(note[current_index]);
   }
 
-  return scale_notes;
+  return scale_notes.slice(0, -1);
 }

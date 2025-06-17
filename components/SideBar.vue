@@ -1,29 +1,22 @@
 <script setup lang="ts">
-// 
+// Selected value props
+const current_bpm = defineModel<number>('current_bpm')
+const current_time_signature = defineModel<string>('current_time_signature')
+const current_scale = defineModel<string>('current_scale')
+const current_key = defineModel<string>('current_key')
 
 // Filters
-const bpm = ref(100)
-
 const time_signatures = ref(["4/4", "3/4", "2/4", "6/8"])
-const current_time_signature = ref("4/4")
-
 const keys = ref(note)
-const current_key = ref("C")
-
 const scales = ref(["major", "natural_minor"])
-const current_scale = ref("major")
-
 const randomize = ref(true)
-
-// Computed Values
-const current_notes = computed(() => get_scale_notes(current_key.value, current_scale.value))
 </script>
 
 <template>
   <div class="flex flex-col gap-y-2 w-[300px] px-4 py-4 bg-zinc-900 border-r border-zinc-800">
     <p class="font-bold">Tempo</p>
     <UFormField label="BPM">
-      <UInputNumber v-model="bpm" :min="0" :max="200" variant="subtle"/>
+      <UInputNumber v-model="current_bpm" :min="0" :max="200" variant="subtle"/>
     </UFormField>
     <UFormField label="Time Signature">
       <URadioGroup v-model="current_time_signature" :items="time_signatures" />
