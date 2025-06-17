@@ -12,7 +12,7 @@ const current_scale = ref("Major")
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-6 h-screen w-[280px] px-4 py-2 bg-zinc-900 border-r border-zinc-800">
+  <div class="flex flex-col gap-y-6 w-[300px] px-4 py-2 bg-zinc-900 border-r border-zinc-800">
     <UFormField label="BPM">
       <UInputNumber v-model="bpm" :min="0" :max="200"/>
     </UFormField>
