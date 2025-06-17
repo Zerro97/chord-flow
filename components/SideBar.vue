@@ -13,6 +13,8 @@ const current_key = ref("C")
 const scales = ref(["major", "natural_minor"])
 const current_scale = ref("major")
 
+const randomize = ref(true)
+
 // Computed Values
 const current_notes = computed(() => get_scale_notes(current_key.value, current_scale.value))
 </script>
@@ -33,6 +35,9 @@ const current_notes = computed(() => get_scale_notes(current_key.value, current_
     </UFormField>
     <UFormField label="Scale">
       <USelect v-model="current_scale" :items="scales" variant="subtle"/>
+    </UFormField>
+    <UFormField label="Randomize">
+      <USwitch v-model="randomize" />
     </UFormField>
     <p>{{ current_notes }}</p>
   </div>
