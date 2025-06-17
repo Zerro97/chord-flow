@@ -13,9 +13,9 @@ const chosen_chord = ref("C");
       <SideBar />
       <div class="flex flex-col justify-center items-center w-full relative">
         <p class="text-6xl">{{ chosen_chord }}</p>
-        <div class="absolute bottom-10 rounded-full w-15 h-15 bg-zinc-900/50 hover:bg-zinc-900 flex justify-center items-center">
-          <UIcon name="i-lucide-play" class="size-4 text-zinc-300" />
-        </div>
+        <UButton icon="i-lucide-play" class="absolute bottom-10 text-zinc-500 hover:cursor-pointer rounded-full w-15 h-15 bg-zinc-900/50 hover:bg-zinc-900 flex justify-center items-center">
+          <!-- <UIcon name= class="size-4 text-zinc-300" /> -->
+        </UButton>
       </div>
     </div>
     <div class="flex justify-center items-center w-full py-1 bg-black border-t border-zinc-800">

@@ -12,18 +12,18 @@ const current_scale = ref("Major")
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-6 w-[300px] px-4 py-2 bg-zinc-900 border-r border-zinc-800">
+  <div class="flex flex-col gap-y-6 w-[300px] px-4 py-4 bg-zinc-900 border-r border-zinc-800">
     <UFormField label="BPM">
-      <UInputNumber v-model="bpm" :min="0" :max="200"/>
+      <UInputNumber v-model="bpm" :min="0" :max="200" variant="subtle"/>
     </UFormField>
     <UFormField label="Time Signature">
       <URadioGroup v-model="current_time_signature" :items="time_signatures" />
     </UFormField>
     <UFormField label="Key">
-      <USelect v-model="current_key" :items="keys"/>
+      <USelect v-model="current_key" :items="keys" variant="subtle"/>
     </UFormField>
     <UFormField label="Scale">
-      <USelect v-model="current_scale" :items="scales"/>
+      <USelect v-model="current_scale" :items="scales" variant="subtle"/>
     </UFormField>
   </div>
 </template>
