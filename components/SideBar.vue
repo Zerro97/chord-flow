@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// 
+
+// Filters
 const bpm = ref(100)
 
 const time_signatures = ref(["4/4", "3/4", "2/4", "6/8"])
@@ -7,8 +10,11 @@ const current_time_signature = ref("4/4")
 const keys = ref(["C", "D", "E", "F", "G", "A", "B"])
 const current_key = ref("C")
 
-const scales = ref(["Major", "Minor"])
-const current_scale = ref("Major")
+const scales = ref(["major", "natural_minor"])
+const current_scale = ref("major")
+
+// Computed Values
+const current_notes = computed(() => get_scale_notes(current_key.value, current_scale.value))
 </script>
 
 <template>
@@ -25,5 +31,6 @@ const current_scale = ref("Major")
     <UFormField label="Scale">
       <USelect v-model="current_scale" :items="scales" variant="subtle"/>
     </UFormField>
+    <p>{{ current_notes }}</p>
   </div>
 </template>
