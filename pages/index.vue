@@ -25,7 +25,7 @@ const on_start = () => {
         v-model:current_scale="current_scale"
         v-model:current_key="current_key"
       />
-      <div class="flex flex-col justify-center items-center w-full relative">
+      <div class="flex flex-col justify-center items-center gap-y-20 w-full relative">
         <NoteList 
           class="absolute top-4" 
           :current_notes="current_notes"
@@ -34,6 +34,9 @@ const on_start = () => {
         <NoteDisplay 
           v-model:current_notes="current_notes"
           v-model:current_index="current_index"
+        />
+        <TempoDisplay 
+          :time_signature="current_time_signature"
         />
         <UButton 
           @click="on_start()"
