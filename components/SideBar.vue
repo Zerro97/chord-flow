@@ -29,9 +29,10 @@ const randomize = ref(true)
     <UFormField label="Scale">
       <USelect v-model="current_scale" :items="scales" variant="subtle"/>
     </UFormField>
+    <USeparator class="my-2" />
+    <p class="font-bold">Note</p>
     <UFormField label="Randomize">
       <USwitch v-model="randomize" />
     </UFormField>
-    <p>{{ current_notes }}</p>
   </div>
 </template>
