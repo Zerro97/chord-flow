@@ -4,15 +4,16 @@ const current_bpm = ref(100)
 const current_time_signature = ref("4/4")
 const current_scale = ref("major")
 const current_key = ref("C")
+const current_volume = ref(50)
 
 // Computed Values
 const current_notes = computed<string[]>(() => get_scale_notes(current_key.value, current_scale.value))
 const current_index = ref(0)
 
 const on_start = () => {
-  setInterval(() => {
-    current_index.value = (current_index.value + 1) % current_notes.value.length
-  }, 1000);
+  // setInterval(() => {
+  //   current_index.value = (current_index.value + 1) % current_notes.value.length
+  // }, 1000);
 }
 </script>
 
@@ -24,6 +25,7 @@ const on_start = () => {
         v-model:current_time_signature="current_time_signature"
         v-model:current_scale="current_scale"
         v-model:current_key="current_key"
+        v-model:current_volume="current_volume"
       />
       <div class="flex flex-col justify-center items-center gap-y-20 w-full relative">
         <NoteList 

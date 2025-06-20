@@ -4,6 +4,7 @@ const current_bpm = defineModel<number>('current_bpm')
 const current_time_signature = defineModel<string>('current_time_signature')
 const current_scale = defineModel<string>('current_scale')
 const current_key = defineModel<string>('current_key')
+const current_volume = defineModel<number>('current_volume')
 
 // Filters
 const time_signatures = ref(["4/4", "3/4", "2/4", "6/8"])
@@ -30,9 +31,12 @@ const randomize = ref(true)
       <USelect v-model="current_scale" :items="scales" variant="subtle"/>
     </UFormField>
     <USeparator class="my-2" />
-    <p class="font-bold">Note</p>
+    <p class="font-bold">Other</p>
     <UFormField label="Randomize">
       <USwitch v-model="randomize" />
     </UFormField>
+    <UFormField :label="`Volume (${current_volume}%)`">
+      <USlider v-model="current_volume" class="pt-1" />
+    </UFormField> 
   </div>
 </template>
