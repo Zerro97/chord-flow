@@ -20,7 +20,7 @@ const minor_progressions = [
 
 <template>
   <UModal>
-    <UButton label="Harmonic" color="neutral" variant="subtle" />
+    <UButton label="Harmonic Options" color="neutral" variant="ghost" trailing-icon="i-lucide-chevron-right" />
 
     <template #content>
       <div class="px-4 py-2">

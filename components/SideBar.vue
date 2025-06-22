@@ -8,13 +8,17 @@ const current_scale = defineModel<string>('current_scale')
 const current_key = defineModel<string>('current_key')
 const current_volume = defineModel<number>('current_volume')
 const current_chord_progression = defineModel<string>('current_chord_progression')
+const current_synth_type = defineModel<string>('current_synth_type')
+const current_style = defineModel<string>('current_style')
 
 // Filters
+const styles = ref(["melodic", "harmonic"])
+const synth_types = ref(["Click", "Bass", "Beep"])
 const time_signatures = ref(["4/4", "3/4", "2/4", "6/8"])
 const keys = ref(note)
 const scales = ref(["major", "natural_minor"])
 const randomize = ref(true)
-
+const play_note = ref(true)
 
 // Apply changes
 watch(() => {
@@ -34,7 +38,7 @@ watch(() => {
     <div class="overflow-y-auto">
       <UCollapsible :default-open="true" class="flex flex-col border-b-1 border-zinc-800">
         <UButton
-          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5"
+          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5 hover:cursor-pointer"
           label="Tempo"
           color="neutral"
           variant="subtle"
@@ -58,7 +62,7 @@ watch(() => {
       </UCollapsible>
       <UCollapsible :default-open="true" class="flex flex-col border-b-1 border-zinc-800">
         <UButton
-          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5"
+          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5 hover:cursor-pointer"
           label="Chord"
           color="neutral"
           variant="subtle"
@@ -77,11 +81,9 @@ watch(() => {
               <USelect v-model="current_scale" :items="scales" variant="subtle"/>
             </UFormField>
             <UFormField label="Style">
-              <div class="flex flex-col">
-                <div class="">
-                  <UButton label="Melodic" />
-                </div>
-                <HarmonicModal v-model="current_chord_progression" />
+              <div class="flex flex-col gap-y-3">
+                <USelect v-model="current_style" :items="styles" variant="subtle" />
+                <HarmonicModal v-if="current_style == 'harmonic'" v-model="current_chord_progression" />
               </div>
             </UFormField>
           </div>
@@ -89,7 +91,7 @@ watch(() => {
       </UCollapsible>
       <UCollapsible :default-open="true" class="flex flex-col border-b-1 border-zinc-800">
         <UButton
-          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5"
+          class="group font-bold bg-zinc-900 ring-0 rounded-none px-5 hover:cursor-pointer"
           label="Other"
           color="neutral"
           variant="subtle"
@@ -103,6 +105,12 @@ watch(() => {
           <div class="flex flex-col gap-y-3 px-5 pt-1 pb-3">
             <UFormField label="Randomize">
               <USwitch v-model="randomize" />
+            </UFormField>
+            <UFormField label="Play Notes">
+              <USwitch v-model="play_note" />
+            </UFormField>
+            <UFormField label="Synth Type">
+              <USelect v-model="current_key" :items="keys" variant="subtle" class="min-w-[80px]"/>
             </UFormField>
             <UFormField :label="`Volume (${current_volume} db)`">
               <USlider v-model="current_volume" :min="0" :max="50" class="py-1" />
