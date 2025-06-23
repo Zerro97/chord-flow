@@ -23,15 +23,15 @@ const minor_progressions = [
     <UButton label="Harmonic Options" color="neutral" variant="ghost" trailing-icon="i-lucide-chevron-right" />
 
     <template #content>
-      <div class="px-4 py-2">
-        <h1 class="font-bold text-2xl">Harmonic</h1>
+      <div class="px-4 pt-2 pb-3">
+        <h1 class="font-bold text-2xl mb-2">Harmonic</h1>
         <div class="flex">
           <div class="flex flex-col w-full">
-            <p>Major</p>
+            <p class="mb-1">Major</p>
             <URadioGroup v-model="current_chord_progression" :items="major_progressions" />
           </div>
           <div class="flex flex-col w-full">
-            <p>Minor</p>
+            <p class="mb-1">Minor</p>
             <URadioGroup v-model="current_chord_progression" :items="minor_progressions" />
           </div>
         </div>

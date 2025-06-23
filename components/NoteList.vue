@@ -1,6 +1,6 @@
 <script setup lang="ts">
+const metronome_count = defineModel<string>('metronome_count')
 defineProps<{
-  current_index: number
   current_notes: string[]
 }>()
 </script>
@@ -12,7 +12,7 @@ defineProps<{
       :key="note"
       text="Enabled"
     >
-      <p :class="`${index === current_index ? 'text-primary-400 font-bold' : 'text-white'} hover:cursor-pointer rounded-lg px-2 hover:bg-black`">
+      <p :class="`${index === Math.floor(metronome_count / 4) % 7 ? 'text-primary-400 font-bold' : 'text-white'} hover:cursor-pointer rounded-lg px-2 hover:bg-black`">
         {{ note }}
       </p>
     </UTooltip>

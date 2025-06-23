@@ -1,9 +1,9 @@
 <script setup lang="ts">
+const metronome_count = defineModel<string>('metronome_count')
 const current_notes = defineModel("current_notes")
-const current_index = defineModel("current_index")
 const wrappedNotes = computed(() => {
   const notes = current_notes.value;
-  const index = current_index.value;
+  const index = Math.floor(metronome_count.value / 4);
   const len = notes.length;
 
   // Get indices: x-2, x-1, x, x+1, x+2 with wrap

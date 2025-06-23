@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const metronome_count = defineModel<string>('metronome_count')
 const props = defineProps<{
   time_signature: string
 }>()
@@ -16,7 +17,7 @@ const tempo = computed(() => tempo_count_map[props.time_signature] ?? 1)
     <div
       v-for="(_, i) in tempo"
       :key="i"
-      class="rounded-full p-2 bg-zinc-700"
+      :class="`rounded-full p-2 ${metronome_count % 4 === i ? 'bg-zinc-600' : 'bg-zinc-800'}`"
     />
   </div>
 </template>
